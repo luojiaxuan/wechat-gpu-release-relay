@@ -3,7 +3,7 @@
 
 Reads chats that are open as standalone WeChat windows through the macOS
 accessibility tree, prints one JSON event line and exits. Run it as a background
-task of an agent session: nothing reaches the model until it fires.
+task of an agent session: nothing reaches the agent until it fires.
 """
 
 import argparse

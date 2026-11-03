@@ -63,8 +63,9 @@
 relay.py 带着 release_request 事件退出时:
 1. 截图那个聊天窗口，确认消息是新的、不是我发的、确实在让我释放 GPU
    (群里:管理员 @ 我;私聊:管理员发的)。窗口最小化导致截图失败时，先恢复窗口。
-2. 跑 `radix machines mine --json`，找对应的租约:H200 = hyper00 / hyper01,
-   B200 = b200，H100 = eval-h100 / ci-h100-221;点名了机器以点名为准。
+2. 跑 `radix machines mine --json` 列出我的租约，再用 `radix machines list --json`
+   里每台机器的 `gpu_class` 对上卡型(H200 / H100 / B200)。点名了机器的
+   (machine-id 如 host-85-234-79-62，或群里常说的尾号 -62)以点名为准。
    一个都对不上就跳到第 8 步。
 3. 在请求所在的聊天里只回复 收到, 10分钟内放。10 分钟从请求那一刻算。
 4. 让这些租约上的任务保存:用 SIGTERM 加宽限停容器(`podman stop -t 300 <容器>`),

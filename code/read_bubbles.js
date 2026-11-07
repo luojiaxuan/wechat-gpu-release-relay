@@ -21,8 +21,8 @@ function readWindow(proc, title) {
     var texts = cells.attributes.byName("AXTitle").value();
     var sizes = cells.size();
   } catch (e) {
-    // note (luojiaxuan): a minimized window viewed from another Space is listed but its contents are not reachable (-1728); report it as unreadable like a missing window.
-    if (e.errorNumber === -1728) {
+    // note (luojiaxuan): a minimized window viewed from another Space is listed but its contents are not reachable (-1728), and right after wake from sleep WeChat rebuilds its windows for a minute or more without their split view (-1719); report both as unreadable like a missing window.
+    if (e.errorNumber === -1728 || e.errorNumber === -1719) {
       return null;
     }
     throw e;

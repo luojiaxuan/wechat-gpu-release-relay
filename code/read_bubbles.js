@@ -29,6 +29,10 @@ function readWindow(proc, title) {
     }
     throw e;
   }
+  // note (luojiaxuan): the three reads above are separate AppleEvents; while WeChat is still adding or laying out cells (seen for over half a minute at a time) they disagree in length or report a cell without a size, so the window counts as unreadable for this poll.
+  if (texts.length !== ids.length || sizes.length !== ids.length || sizes.includes(null)) {
+    return null;
+  }
   return ids
     .map((id, i) => [id, texts[i] || "", sizes[i][1]])
     .filter((c) => c[0] === "chat_bubble_item_view")
